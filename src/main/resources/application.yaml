@@ -1,0 +1,11 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/magma
+    username: magma
+    password: magma
+  jpa:
+    hibernate:
+      ddl-auto: create
+server:
+  port: 8080
+
