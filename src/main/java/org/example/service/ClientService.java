@@ -7,6 +7,7 @@ import org.example.model.repository.ClientRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -26,6 +27,10 @@ public class ClientService {
     }
     public List<Client> readAll(){
         return clientRepository.findAll();
+
+    }
+    public Optional<Client> readById(Long id){
+        return clientRepository.findById(id);
 
     }
     public Client update(Client client){

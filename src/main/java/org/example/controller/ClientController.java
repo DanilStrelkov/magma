@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @RestController
@@ -24,6 +25,11 @@ public class ClientController {
     @GetMapping
     public ResponseEntity<List<Client>> readAll(){
         return new ResponseEntity<>(clientService.readAll(),HttpStatus.OK);
+
+    }
+    @GetMapping("/{id}")
+    public ResponseEntity<Optional<Client>> readByid(@PathVariable Long id){
+        return new ResponseEntity<>(clientService.readById(id),HttpStatus.OK);
 
     }
     @PutMapping
