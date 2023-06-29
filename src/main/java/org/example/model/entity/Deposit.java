@@ -60,7 +60,6 @@ public class Deposit {
     @NotNull
     @Builder.Default
     private LocalDateTime expireDate = LocalDateTime.now();
-    private String test;
 
 
 }
