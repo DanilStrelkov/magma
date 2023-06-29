@@ -3,6 +3,7 @@ package org.example.service;
 import lombok.AllArgsConstructor;
 import org.example.model.Dto.ClientDTO;
 import org.example.model.entity.Client;
+import org.example.model.enumerated.status.ClientStatus;
 import org.example.model.repository.ClientRepository;
 import org.springframework.stereotype.Service;
 
@@ -34,6 +35,11 @@ public class ClientService {
 
     }
     public Client update(Client client){
+        return clientRepository.save(client);
+    }
+    public Client updateStatus(Long id, ClientStatus clientStatus){
+        Client client = clientRepository.findById(id).get();
+        client.setClientStatus(clientStatus);
         return clientRepository.save(client);
     }
     public void delete(Long id){

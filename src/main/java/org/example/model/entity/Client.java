@@ -1,10 +1,8 @@
 package org.example.model.entity;
-
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import jakarta.validation.constraints.NotNull;
+import lombok.*;
+import org.example.model.enumerated.status.ClientStatus;
 
 @Entity
 @Data
@@ -29,6 +27,8 @@ public class Client {
     private String phone;
     @Column(name = "email")
     private String email;
-
-
+    @Builder.Default
+    @NotNull
+    @Column(name = "client_status")
+    private ClientStatus clientStatus=ClientStatus.ACTIVE;
 }

@@ -3,6 +3,7 @@ package org.example.controller;
 import lombok.AllArgsConstructor;
 import org.example.model.Dto.ClientDTO;
 import org.example.model.entity.Client;
+import org.example.model.enumerated.status.ClientStatus;
 import org.example.service.ClientService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -35,6 +36,10 @@ public class ClientController {
     @PutMapping
     public ResponseEntity<Client> update(@RequestBody Client client){
         return new ResponseEntity<>(clientService.update(client),HttpStatus.OK);
+    }
+    @PutMapping("/{id}/{clientStatus}")
+    public ResponseEntity<Client> updateStatus(@PathVariable Long id,@PathVariable ClientStatus clientStatus){
+        return new ResponseEntity<>(clientService.updateStatus(id,clientStatus),HttpStatus.OK);
     }
     @DeleteMapping("/{id}")
     public HttpStatus delete(@PathVariable Long id){
