@@ -4,7 +4,7 @@ package org.example.model.dto.request;
 import lombok.Data;
 
 @Data
-public class ClientDTO {
+public class ClientRequestDTO {
     private String firstName;
     private String lastName;
     private String middleName;

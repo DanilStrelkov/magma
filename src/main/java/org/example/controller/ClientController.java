@@ -1,7 +1,7 @@
 package org.example.controller;
 
 import lombok.AllArgsConstructor;
-import org.example.model.dto.request.ClientDTO;
+import org.example.model.dto.request.ClientRequestDTO;
 import org.example.model.entity.Client;
 import org.example.model.enumerated.status.ClientStatus;
 import org.example.service.ClientService;
@@ -20,7 +20,7 @@ public class ClientController {
     private ClientService clientService;
 
     @PostMapping
-    public ResponseEntity<Client> create(@RequestBody ClientDTO dto){
+    public ResponseEntity<Client> create(@RequestBody ClientRequestDTO dto){
         return new ResponseEntity<>(clientService.create(dto), HttpStatus.OK);
     }
     @GetMapping

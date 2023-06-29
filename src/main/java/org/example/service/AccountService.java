@@ -1,7 +1,7 @@
 package org.example.service;
 
 import lombok.AllArgsConstructor;
-import org.example.model.dto.request.AccountDTO;
+import org.example.model.dto.request.AccountRequestDTO;
 import org.example.model.entity.Account;
 import org.example.model.repository.AccountRepository;
 import org.springframework.stereotype.Service;
@@ -14,7 +14,7 @@ import java.util.Optional;
 public class AccountService {
     private final AccountRepository accountRepository;
 
-    public Account create(AccountDTO dto) {
+    public Account create(AccountRequestDTO dto) {
         return accountRepository.save(Account.builder()
                 .client(dto.getClient())
                 .card(dto.getCard())

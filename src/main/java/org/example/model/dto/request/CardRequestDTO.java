@@ -9,7 +9,7 @@ import org.example.model.enumerated.type.CardType;
 import java.util.Date;
 
 @Data
-public class CardDTO {
+public class CardRequestDTO {
     private String cardNumber;
     private String cvv;
     private Date expireDate;

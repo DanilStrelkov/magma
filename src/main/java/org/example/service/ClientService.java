@@ -1,7 +1,7 @@
 package org.example.service;
 
 import lombok.AllArgsConstructor;
-import org.example.model.dto.request.ClientDTO;
+import org.example.model.dto.request.ClientRequestDTO;
 import org.example.model.entity.Client;
 import org.example.model.enumerated.status.ClientStatus;
 import org.example.model.repository.ClientRepository;
@@ -16,7 +16,7 @@ public class ClientService {
 
     private final ClientRepository clientRepository;
 
-    public Client create(ClientDTO dto){
+    public Client create(ClientRequestDTO dto){
         return clientRepository.save(Client.builder()
                 .firstName(dto.getFirstName())
                 .lastName(dto.getLastName())

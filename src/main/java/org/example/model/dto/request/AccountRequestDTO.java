@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
-public class AccountDTO {
+public class AccountRequestDTO {
     private Long moneyAmount;
     private String secretWord;
     private AccountStatus status;

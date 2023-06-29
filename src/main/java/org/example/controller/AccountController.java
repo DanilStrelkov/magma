@@ -1,7 +1,7 @@
 package org.example.controller;
 
 import lombok.AllArgsConstructor;
-import org.example.model.dto.request.AccountDTO;
+import org.example.model.dto.request.AccountRequestDTO;
 import org.example.model.entity.Account;
 import org.example.service.AccountService;
 import org.springframework.http.HttpStatus;
@@ -18,7 +18,7 @@ public class AccountController {
     private AccountService accountService;
 
     @PostMapping
-    public ResponseEntity<Account> create(@RequestBody AccountDTO dto) {
+    public ResponseEntity<Account> create(@RequestBody AccountRequestDTO dto) {
         return new ResponseEntity<>(accountService.create(dto), HttpStatus.OK);
     }
 

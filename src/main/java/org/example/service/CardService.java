@@ -1,7 +1,7 @@
 package org.example.service;
 
 import lombok.AllArgsConstructor;
-import org.example.model.dto.request.CardDTO;
+import org.example.model.dto.request.CardRequestDTO;
 import org.example.model.entity.Card;
 import org.example.model.repository.CardRepository;
 import org.springframework.stereotype.Service;
@@ -14,7 +14,7 @@ import java.util.Optional;
 public class CardService {
     private final CardRepository cardRepository;
 
-    public Card create(CardDTO dto) {
+    public Card create(CardRequestDTO dto) {
         return cardRepository.save(Card.builder()
                 .client(dto.getClient())
                 .cardNumber(dto.getCardNumber())

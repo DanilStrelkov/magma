@@ -1,7 +1,7 @@
 package org.example.controller;
 
 import lombok.AllArgsConstructor;
-import org.example.model.dto.request.CardDTO;
+import org.example.model.dto.request.CardRequestDTO;
 import org.example.model.entity.Card;
 import org.example.service.CardService;
 import org.springframework.http.HttpStatus;
@@ -18,7 +18,7 @@ public class CardController {
     private CardService cardService;
 
     @PostMapping
-    public ResponseEntity<Card> create(@RequestBody CardDTO dto) {
+    public ResponseEntity<Card> create(@RequestBody CardRequestDTO dto) {
         return new ResponseEntity<>(cardService.create(dto), HttpStatus.OK);
     }
 
