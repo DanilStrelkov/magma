@@ -53,5 +53,6 @@ public class Account {
     @NotNull
     @Enumerated(EnumType.STRING)
     private CurrencyType currencyType;
+    private String test;
 
 }
