@@ -38,12 +38,10 @@ public class Card {
     @NotNull
     @NotBlank
     private String cardHolder;
-    @Column(name = "client_id")
     @NotNull
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "client_id", referencedColumnName = "id")
     private Client client;
-    @Column(name = "account_id")
     @NotNull
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "account_id", referencedColumnName = "id")

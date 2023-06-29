@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/magma
     username: magma
     password: magma
+    url: jdbc:postgresql://localhost:5432/magma
   jpa:
     hibernate:
       ddl-auto: create

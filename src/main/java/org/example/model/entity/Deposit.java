@@ -52,7 +52,6 @@ public class Deposit {
     @NotNull
     @Builder.Default
     private LocalDateTime incomeDate = LocalDateTime.now();
-    @Column(name = "client_id")
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "client_id", referencedColumnName = "id")
     @NotNull
