@@ -30,5 +30,5 @@ public class Client {
     @Builder.Default
     @NotNull
     @Column(name = "client_status")
-    private ClientStatus clientStatus=ClientStatus.ACTIVE;
+    private ClientStatus clientStatus = ClientStatus.ACTIVE;
 }
