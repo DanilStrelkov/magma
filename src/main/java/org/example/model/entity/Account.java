@@ -8,6 +8,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.example.model.enumerated.status.AccountStatus;
+import org.example.model.enumerated.type.CurrencyType;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -32,6 +33,7 @@ public class Account {
     @Column(name = "status")
     @Builder.Default
     @NotNull
+    @Enumerated(EnumType.STRING)
     private AccountStatus status = AccountStatus.CLOSED;
     @Column(name = "creation_date")
     @NotNull
@@ -49,5 +51,9 @@ public class Account {
     @JoinColumn(name = "card_id", referencedColumnName = "id")
     @NotNull
     private List<Card> card;
+    @Column(name = "currency_type")
+    @NotNull
+    @Enumerated(EnumType.STRING)
+    private CurrencyType currencyType;
 
 }

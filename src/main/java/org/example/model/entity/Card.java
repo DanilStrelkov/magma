@@ -51,8 +51,10 @@ public class Card {
     @Column(name = "status")
     @Builder.Default
     @NotNull
+    @Enumerated(EnumType.STRING)
     private CardStatus status = CardStatus.FROZEN;
     @Column(name = "type")
     @NotNull
+    @Enumerated(EnumType.STRING)
     private CardType type;
 }
