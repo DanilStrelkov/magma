@@ -41,12 +41,10 @@ public class Account {
     private LocalDateTime creationDate = LocalDateTime.now();
     @Column(name = "deposit_limit")
     private Long depositLimit;
-    @Column(name = "client_id")
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "client_id", referencedColumnName = "id")
     @NotNull
     private Client client;
-    @Column(name = "card_id")
     @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "card_id", referencedColumnName = "id")
     @NotNull
