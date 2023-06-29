@@ -16,6 +16,17 @@ import java.util.Optional;
 @AllArgsConstructor
 public class CardController {
     private CardService cardService;
+    @PostMapping
+    @RequestMapping("/cash/get")
+    public String getCash (@RequestBody CardRequestDTO dto) {
+        return cardService.getCash(dto.getCardNumber(),dto.getCvv(),dto.getMoneyAmount());
+    }
+    @PostMapping
+    @RequestMapping("/cash/put")
+    public String putCash (@RequestBody CardRequestDTO dto) {
+        return cardService.putCash(dto.getCardNumber(),dto.getCvv(),dto.getMoneyAmount());
+    }
+
 
     @PostMapping
     public ResponseEntity<Card> create(@RequestBody CardRequestDTO dto) {

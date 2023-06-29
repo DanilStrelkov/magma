@@ -30,5 +30,6 @@ public class Client {
     @Builder.Default
     @NotNull
     @Column(name = "client_status")
+    @Enumerated(EnumType.STRING)
     private ClientStatus clientStatus = ClientStatus.ACTIVE;
 }

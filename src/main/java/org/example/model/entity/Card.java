@@ -27,6 +27,8 @@ public class Card {
     @NotNull
     @NotBlank
     private String cardNumber;
+    @Column(name = "money_amount")
+    private Long moneyAmount;
     @Column(name = "cvv")
     @NotNull
     @NotBlank
