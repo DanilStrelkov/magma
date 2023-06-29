@@ -1,7 +1,7 @@
 package org.example.service;
 
 import lombok.AllArgsConstructor;
-import org.example.model.Dto.ClientDTO;
+import org.example.model.dto.request.ClientDTO;
 import org.example.model.entity.Client;
 import org.example.model.repository.ClientRepository;
 import org.springframework.stereotype.Service;

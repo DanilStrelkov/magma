@@ -1,7 +1,7 @@
 package org.example.controller;
 
 import lombok.AllArgsConstructor;
-import org.example.model.Dto.ClientDTO;
+import org.example.model.dto.request.ClientDTO;
 import org.example.model.entity.Client;
 import org.example.service.ClientService;
 import org.springframework.http.HttpStatus;
