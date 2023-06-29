@@ -8,7 +8,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.example.model.enumerated.status.AccountStatus;
-import org.example.model.enumerated.status.ClientStatus;
 import org.example.model.enumerated.type.CurrencyType;
 import org.example.model.enumerated.type.DepositType;
 
@@ -20,7 +19,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "deposit")
-public class deposit {
+public class Deposit {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
