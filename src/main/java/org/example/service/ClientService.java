@@ -1,10 +1,11 @@
 package org.example.service;
 
 import lombok.AllArgsConstructor;
+import org.example.mapper.ClientMapper;
 import org.example.model.dto.request.ClientRequestDTO;
 import org.example.model.entity.Client;
 import org.example.model.enumerated.status.ClientStatus;
-import org.example.model.repository.ClientRepository;
+import org.example.repository.ClientRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,16 +16,11 @@ import java.util.Optional;
 public class ClientService {
 
     private final ClientRepository clientRepository;
+    private final ClientMapper clientMapper;
 
     public Client create(ClientRequestDTO dto){
-        return clientRepository.save(Client.builder()
-                .firstName(dto.getFirstName())
-                .lastName(dto.getLastName())
-                .middleName(dto.getMiddleName())
-                .address(dto.getAddress())
-                .phone(dto.getPhone())
-                .email(dto.getEmail())
-                .build());
+
+        return clientRepository.save(clientMapper.toEntity(dto));
     }
     public List<Client> readAll(){
         return clientRepository.findAll();

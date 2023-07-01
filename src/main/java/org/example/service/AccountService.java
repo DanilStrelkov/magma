@@ -3,7 +3,7 @@ package org.example.service;
 import lombok.AllArgsConstructor;
 import org.example.model.dto.request.AccountRequestDTO;
 import org.example.model.entity.Account;
-import org.example.model.repository.AccountRepository;
+import org.example.repository.AccountRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

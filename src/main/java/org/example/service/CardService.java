@@ -4,8 +4,8 @@ import lombok.AllArgsConstructor;
 import org.example.model.dto.request.CardRequestDTO;
 import org.example.model.entity.Account;
 import org.example.model.entity.Card;
-import org.example.model.repository.AccountRepository;
-import org.example.model.repository.CardRepository;
+import org.example.repository.AccountRepository;
+import org.example.repository.CardRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
