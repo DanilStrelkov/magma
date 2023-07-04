@@ -24,31 +24,39 @@ public class Account {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
+
     @Column(name = "money_amount")
     private Long moneyAmount;
+
     @Column(name = "secret_word")
     @NotBlank
     @NotNull
     private String secretWord;
+
     @Column(name = "status")
     @Builder.Default
     @NotNull
     @Enumerated(EnumType.STRING)
     private AccountStatus status = AccountStatus.CLOSED;
+
     @Column(name = "creation_date")
     @NotNull
     @Builder.Default
     private LocalDateTime creationDate = LocalDateTime.now();
+
     @Column(name = "deposit_limit")
     private Long depositLimit;
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "client_id", referencedColumnName = "id")
     @NotNull
     private Client client;
+
     @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "card_id", referencedColumnName = "id")
     @NotNull
     private List<Card> card;
+
     @Column(name = "currency_type")
     @NotNull
     @Enumerated(EnumType.STRING)
