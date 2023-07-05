@@ -61,10 +61,7 @@ public class CreditCard {
     @JoinColumn(name = "account_id", referencedColumnName = "id")
     @NotNull
     private Account account;
-
-    @Column(name = "get-account")
-    @NotNull
-    public Account getAccount() {
+    public @NotNull Account getAccount() {
         return account;
     }
 }
