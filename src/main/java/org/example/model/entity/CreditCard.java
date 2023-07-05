@@ -62,6 +62,7 @@ public class CreditCard {
     @NotNull
     private Account account;
 
+    @Column(name = "get-account")
     @NotNull
     public Account getAccount() {
         return account;
