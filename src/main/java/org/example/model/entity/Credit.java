@@ -6,8 +6,11 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.example.model.enumerated.status.CreditStatus;
 import org.example.model.enumerated.term.TermType;
 import org.example.model.enumerated.type.CurrencyType;
+
+import java.time.LocalDateTime;
 
 @Entity
 @NoArgsConstructor
@@ -25,6 +28,17 @@ public class Credit {
     @JoinColumn(name = "client_id", referencedColumnName = "id")
     @NotNull
     private Client client;
+
+    @Column(name = "credit_status")
+    @Builder.Default
+    @NotNull
+    @Enumerated(EnumType.STRING)
+    private CreditStatus creditStatus = CreditStatus.CLOSED;
+
+    @Column(name = "creation_date")
+    @NotNull
+    @Builder.Default
+    private LocalDateTime creationDate = LocalDateTime.now();
 
     @Column(name = "money_amount")
     @NotNull

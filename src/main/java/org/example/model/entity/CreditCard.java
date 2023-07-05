@@ -25,12 +25,12 @@ public class CreditCard {
     private Long id;
 
     @Column(name = "card_number")
-    private Long cardNumber;
+    private String cardNumber;
 
     @Column(name = "cvv")
     @NotNull
     @NotBlank
-    private int cvv;
+    private String cvv;
 
     @Column(name = "expire_date")
     @NotNull
@@ -56,4 +56,14 @@ public class CreditCard {
     @NotNull
     @Enumerated(EnumType.STRING)
     private CardType type;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "account_id", referencedColumnName = "id")
+    @NotNull
+    private Account account;
+
+    @NotNull
+    public Account getAccount() {
+        return account;
+    }
 }
