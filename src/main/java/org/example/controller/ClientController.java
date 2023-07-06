@@ -8,40 +8,45 @@ import org.example.service.ClientService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import java.util.List;
 
+import java.util.List;
 
 
 @RestController
 @RequestMapping("/client")
 @AllArgsConstructor
 public class ClientController {
-    private ClientService clientService;
+  private ClientService clientService;
 
-    @PostMapping
-    public ResponseEntity<ClientResponseDTO> create(@RequestBody ClientRequestDTO dto){
-        return new ResponseEntity<>(clientService.create(dto), HttpStatus.OK);
-    }
-    @GetMapping
-    public ResponseEntity<List<ClientResponseDTO>> readAll(){
-        return new ResponseEntity<>(clientService.readAll(),HttpStatus.OK);
+  @PostMapping
+  public ResponseEntity<ClientResponseDTO> create(@RequestBody ClientRequestDTO dto) {
+    return new ResponseEntity<>(clientService.create(dto), HttpStatus.OK);
+  }
 
-    }
-    @GetMapping("/{id}")
-    public ResponseEntity<ClientResponseDTO> readByid(@PathVariable Long id){
-        return new ResponseEntity<>(clientService.readById(id),HttpStatus.OK);
+  @GetMapping
+  public ResponseEntity<List<ClientResponseDTO>> readAll() {
+    return new ResponseEntity<>(clientService.readAll(), HttpStatus.OK);
 
-    }
-    @PutMapping
-    public ResponseEntity<ClientResponseDTO> update(@RequestBody ClientRequestDTO clientRequestDTO){
-        return new ResponseEntity<>(clientService.update(clientRequestDTO),HttpStatus.OK);
-    }
-    @PutMapping("/{id}/{clientStatus}")
-    public HttpStatus updateStatus(@PathVariable Long id, @PathVariable ClientStatus clientStatus){
-        return clientService.updateStatus(id,clientStatus);
-    }
-    @DeleteMapping("/{id}")
-    public HttpStatus delete(@PathVariable Long id){
-        return clientService.delete(id);
-    }
+  }
+
+  @GetMapping("/{id}")
+  public ResponseEntity<ClientResponseDTO> readByid(@PathVariable Long id) {
+    return new ResponseEntity<>(clientService.readById(id), HttpStatus.OK);
+
+  }
+
+  @PutMapping
+  public ResponseEntity<ClientResponseDTO> update(@RequestBody ClientRequestDTO clientRequestDTO) {
+    return new ResponseEntity<>(clientService.update(clientRequestDTO), HttpStatus.OK);
+  }
+
+  @PutMapping("/{id}/{clientStatus}")
+  public HttpStatus updateStatus(@PathVariable Long id, @PathVariable ClientStatus clientStatus) {
+    return clientService.updateStatus(id, clientStatus);
+  }
+
+  @DeleteMapping("/{id}")
+  public HttpStatus delete(@PathVariable Long id) {
+    return clientService.delete(id);
+  }
 }

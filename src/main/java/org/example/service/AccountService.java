@@ -15,28 +15,31 @@ import java.util.Optional;
 @Service
 @AllArgsConstructor
 public class AccountService {
-    private final AccountRepository accountRepository;
-    private final AccountMapper accountMapper;
+  private final AccountRepository accountRepository;
+  private final AccountMapper accountMapper;
 
-    public AccountResponseDTO create(AccountRequestDTO dto){
-        return accountMapper.toDto(accountRepository.save(accountMapper.toEntity(dto)));
-    }
-    public List<AccountResponseDTO> readAll(){
-        return accountMapper.toListDto(accountRepository.findAll());
+  public AccountResponseDTO create(AccountRequestDTO dto) {
+    return accountMapper.toDto(accountRepository.save(accountMapper.toEntity(dto)));
+  }
 
-    }
-    public AccountResponseDTO readById(Long id){
-        Optional<Account> account = accountRepository.findById(id);
-        return account.map(accountMapper::toDto).orElse(null);
+  public List<AccountResponseDTO> readAll() {
+    return accountMapper.toListDto(accountRepository.findAll());
 
-    }
-    public AccountResponseDTO update(AccountRequestDTO accountRequestDTO) {
-        accountRepository.save(accountMapper.toEntity(accountRequestDTO));
-        return accountMapper.toDto(accountMapper.toEntity(accountRequestDTO));
-    }
+  }
 
-        public HttpStatus delete(Long id){
-            accountRepository.deleteById(id);
-            return HttpStatus.OK;
-        }
+  public AccountResponseDTO readById(Long id) {
+    Optional<Account> account = accountRepository.findById(id);
+    return account.map(accountMapper::toDto).orElse(null);
+
+  }
+
+  public AccountResponseDTO update(AccountRequestDTO accountRequestDTO) {
+    accountRepository.save(accountMapper.toEntity(accountRequestDTO));
+    return accountMapper.toDto(accountMapper.toEntity(accountRequestDTO));
+  }
+
+  public HttpStatus delete(Long id) {
+    accountRepository.deleteById(id);
+    return HttpStatus.OK;
+  }
 }

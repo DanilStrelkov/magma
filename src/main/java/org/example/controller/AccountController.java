@@ -14,32 +14,32 @@ import java.util.List;
 @RequestMapping("/account")
 @AllArgsConstructor
 public class AccountController {
-    private AccountService accountService;
+  private AccountService accountService;
 
-    @PostMapping
-    public ResponseEntity<AccountResponseDTO> create(@RequestBody AccountRequestDTO accountRequestDTO) {
-        return new ResponseEntity<>(accountService.create(accountRequestDTO), HttpStatus.OK);
-    }
+  @PostMapping
+  public ResponseEntity<AccountResponseDTO> create(@RequestBody AccountRequestDTO accountRequestDTO) {
+    return new ResponseEntity<>(accountService.create(accountRequestDTO), HttpStatus.OK);
+  }
 
-    @GetMapping
-    public ResponseEntity<List<AccountResponseDTO>> readAll() {
-        return new ResponseEntity<>(accountService.readAll(), HttpStatus.OK);
+  @GetMapping
+  public ResponseEntity<List<AccountResponseDTO>> readAll() {
+    return new ResponseEntity<>(accountService.readAll(), HttpStatus.OK);
 
-    }
+  }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<AccountResponseDTO> readById(@PathVariable Long id) {
-        return new ResponseEntity<>(accountService.readById(id), HttpStatus.OK);
+  @GetMapping("/{id}")
+  public ResponseEntity<AccountResponseDTO> readById(@PathVariable Long id) {
+    return new ResponseEntity<>(accountService.readById(id), HttpStatus.OK);
 
-    }
+  }
 
-    @PutMapping
-    public ResponseEntity<AccountResponseDTO> update(@RequestBody AccountRequestDTO accountRequestDTO) {
-        return new ResponseEntity<>(accountService.update(accountRequestDTO), HttpStatus.OK);
-    }
+  @PutMapping
+  public ResponseEntity<AccountResponseDTO> update(@RequestBody AccountRequestDTO accountRequestDTO) {
+    return new ResponseEntity<>(accountService.update(accountRequestDTO), HttpStatus.OK);
+  }
 
-    @DeleteMapping("/{id}")
-    public HttpStatus delete(@PathVariable Long id) {
-        return accountService.delete(id);
-    }
+  @DeleteMapping("/{id}")
+  public HttpStatus delete(@PathVariable Long id) {
+    return accountService.delete(id);
+  }
 }

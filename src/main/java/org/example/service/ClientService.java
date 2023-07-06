@@ -17,36 +17,41 @@ import java.util.Optional;
 @AllArgsConstructor
 public class ClientService {
 
-    private final ClientRepository clientRepository;
-    private final ClientMapper clientMapper;
+  private final ClientRepository clientRepository;
+  private final ClientMapper clientMapper;
 
-    public ClientResponseDTO create(ClientRequestDTO dto){
-        return clientMapper.toDto(clientRepository.save(clientMapper.toEntity(dto)));
-    }
-    public List<ClientResponseDTO> readAll(){
-        return clientMapper.toListDto(clientRepository.findAll());
+  public ClientResponseDTO create(ClientRequestDTO dto) {
+    return clientMapper.toDto(clientRepository.save(clientMapper.toEntity(dto)));
+  }
 
-    }
-    public ClientResponseDTO readById(Long id){
-        Optional<Client> client = clientRepository.findById(id);
-        return client.map(clientMapper::toDto).orElse(null);
+  public List<ClientResponseDTO> readAll() {
+    return clientMapper.toListDto(clientRepository.findAll());
 
+  }
+
+  public ClientResponseDTO readById(Long id) {
+    Optional<Client> client = clientRepository.findById(id);
+    return client.map(clientMapper::toDto).orElse(null);
+
+  }
+
+  public ClientResponseDTO update(ClientRequestDTO clientRequestDTO) {
+    clientRepository.save(clientMapper.toEntity(clientRequestDTO));
+    return clientMapper.toDto(clientMapper.toEntity(clientRequestDTO));
+  }
+
+  public HttpStatus updateStatus(Long id, ClientStatus clientStatus) {
+    Optional<Client> client = clientRepository.findById(id);
+    if (client.isEmpty()) {
+      return HttpStatus.I_AM_A_TEAPOT;
     }
-    public ClientResponseDTO update(ClientRequestDTO clientRequestDTO){
-        clientRepository.save(clientMapper.toEntity(clientRequestDTO));
-        return clientMapper.toDto(clientMapper.toEntity(clientRequestDTO));
-    }
-    public HttpStatus updateStatus(Long id, ClientStatus clientStatus){
-        Optional<Client> client = clientRepository.findById(id);
-        if (client.isEmpty()) {
-            return HttpStatus.I_AM_A_TEAPOT;
-        }
-        client.get().setClientStatus(clientStatus);
-        clientRepository.save(client.get());
-        return HttpStatus.OK;
-    }
-    public HttpStatus delete(Long id){
-        clientRepository.deleteById(id);
-        return HttpStatus.OK;
-    }
+    client.get().setClientStatus(clientStatus);
+    clientRepository.save(client.get());
+    return HttpStatus.OK;
+  }
+
+  public HttpStatus delete(Long id) {
+    clientRepository.deleteById(id);
+    return HttpStatus.OK;
+  }
 }

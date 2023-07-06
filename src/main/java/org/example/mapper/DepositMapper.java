@@ -11,8 +11,9 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 @Component
 public interface DepositMapper {
-    DepositResponseDTO toDto(Deposit deposit);
+  DepositResponseDTO toDto(Deposit deposit);
 
-    Deposit toEntity(DepositRequestDTO dto);
-    List<DepositResponseDTO> toListDto(List<Deposit> deposit);
+  Deposit toEntity(DepositRequestDTO dto);
+
+  List<DepositResponseDTO> toListDto(List<Deposit> deposit);
 }

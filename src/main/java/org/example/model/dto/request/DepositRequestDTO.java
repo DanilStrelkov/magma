@@ -10,14 +10,14 @@ import java.time.LocalDateTime;
 
 @Data
 public class DepositRequestDTO {
-    private Long moneyAmount;
-    private CurrencyType currencyType;
-    private String secretWord;
-    private DepositStatus depositStatus ;
-    private LocalDateTime creationDate ;
-    private DepositType depositType;
-    private Float depositLimit;
-    private LocalDateTime incomeDate;
-    private Client client;
-    private LocalDateTime expireDate;
+  private Long moneyAmount;
+  private CurrencyType currencyType;
+  private String secretWord;
+  private DepositStatus depositStatus;
+  private LocalDateTime creationDate;
+  private DepositType depositType;
+  private Float depositLimit;
+  private LocalDateTime incomeDate;
+  private Client client;
+  private LocalDateTime expireDate;
 }
