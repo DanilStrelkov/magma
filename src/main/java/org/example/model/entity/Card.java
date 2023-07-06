@@ -19,42 +19,42 @@ import java.util.Date;
 @Builder
 @Table(name = "card")
 public class Card {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
-    @Column(name = "card_number")
-    @NotNull
-    @NotBlank
-    private String cardNumber;
-    @Column(name = "money_amount")
-    private Long moneyAmount;
-    @Column(name = "cvv")
-    @NotNull
-    @NotBlank
-    private String cvv;
-    @Column(name = "expire_date")
-    @NotNull
-    private Date expireDate;
-    @Column(name = "card_holder")
-    @NotNull
-    @NotBlank
-    private String cardHolder;
-    @NotNull
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "client_id", referencedColumnName = "id")
-    private Client client;
-    @NotNull
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "account_id", referencedColumnName = "id")
-    private Account account;
-    @Column(name = "status")
-    @Builder.Default
-    @NotNull
-    @Enumerated(EnumType.STRING)
-    private CardStatus status = CardStatus.FROZEN;
-    @Column(name = "type")
-    @NotNull
-    @Enumerated(EnumType.STRING)
-    private CardType type;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "id")
+  private Long id;
+  @Column(name = "card_number")
+  @NotNull
+  @NotBlank
+  private String cardNumber;
+  @Column(name = "money_amount")
+  private Long moneyAmount;
+  @Column(name = "cvv")
+  @NotNull
+  @NotBlank
+  private String cvv;
+  @Column(name = "expire_date")
+  @NotNull
+  private Date expireDate;
+  @Column(name = "card_holder")
+  @NotNull
+  @NotBlank
+  private String cardHolder;
+  @NotNull
+  @ManyToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "client_id", referencedColumnName = "id")
+  private Client client;
+  @NotNull
+  @ManyToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "account_id", referencedColumnName = "id")
+  private Account account;
+  @Column(name = "status")
+  @Builder.Default
+  @NotNull
+  @Enumerated(EnumType.STRING)
+  private CardStatus status = CardStatus.FROZEN;
+  @Column(name = "type")
+  @NotNull
+  @Enumerated(EnumType.STRING)
+  private CardType type;
 }

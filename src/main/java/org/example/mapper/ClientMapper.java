@@ -1,7 +1,7 @@
 package org.example.mapper;
 
 import org.example.model.dto.request.ClientRequestDTO;
-import org.example.model.dto.response.ClientResponceDTO;
+import org.example.model.dto.response.ClientResponseDTO;
 import org.example.model.entity.Client;
 import org.mapstruct.Mapper;
 import org.springframework.stereotype.Component;
@@ -12,8 +12,9 @@ import java.util.List;
 @Component
 public interface ClientMapper {
 
-    Client toEntity(ClientRequestDTO dto);
-    ClientResponceDTO toDto(Client client);
+  Client toEntity(ClientRequestDTO dto);
 
-    List<ClientResponceDTO> toListDto(List<Client> clients);
+  ClientResponseDTO toDto(Client client);
+
+  List<ClientResponseDTO> toListDto(List<Client> clients);
 }

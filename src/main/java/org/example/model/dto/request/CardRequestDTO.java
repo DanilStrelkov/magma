@@ -12,13 +12,13 @@ import java.util.Date;
 @Data
 @Builder
 public class CardRequestDTO {
-    private String cardNumber;
-    private Long moneyAmount;
-    private String cvv;
-    private Date expireDate;
-    private String cardHolder;
-    private Client client;
-    private Account account;
-    private CardStatus status;
-    private CardType type;
+  private String cardNumber;
+  private Long moneyAmount;
+  private String cvv;
+  private Date expireDate;
+  private String cardHolder;
+  private Client client;
+  private Account account;
+  private CardStatus status;
+  private CardType type;
 }
