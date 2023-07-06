@@ -8,7 +8,7 @@ import org.example.model.enumerated.type.DepositType;
 import java.time.LocalDateTime;
 
 @Data
-public class DepositResponceDTO {
+public class DepositResponseDTO {
     private Long moneyAmount;
     private CurrencyType currencyType;
     private DepositStatus depositStatus ;

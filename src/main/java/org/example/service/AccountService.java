@@ -1,9 +1,12 @@
 package org.example.service;
 
 import lombok.AllArgsConstructor;
+import org.example.mapper.AccountMapper;
 import org.example.model.dto.request.AccountRequestDTO;
+import org.example.model.dto.response.AccountResponseDTO;
 import org.example.model.entity.Account;
 import org.example.repository.AccountRepository;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,35 +16,27 @@ import java.util.Optional;
 @AllArgsConstructor
 public class AccountService {
     private final AccountRepository accountRepository;
+    private final AccountMapper accountMapper;
 
-    public Account create(AccountRequestDTO dto) {
-        return accountRepository.save(Account.builder()
-                .client(dto.getClient())
-                .card(dto.getCard())
-                .currencyType(dto.getCurrencyType())
-                .moneyAmount(dto.getMoneyAmount())
-                .depositLimit(dto.getDepositLimit())
-                .creationDate(dto.getCreationDate())
-                .secretWord(dto.getSecretWord())
-                .status(dto.getStatus())
-                .build());
+    public AccountResponseDTO create(AccountRequestDTO dto){
+        return accountMapper.toDto(accountRepository.save(accountMapper.toEntity(dto)));
     }
-
-    public List<Account> readAll() {
-        return accountRepository.findAll();
+    public List<AccountResponseDTO> readAll(){
+        return accountMapper.toListDto(accountRepository.findAll());
 
     }
-
-    public Optional<Account> readById(Long id) {
-        return accountRepository.findById(id);
+    public AccountResponseDTO readById(Long id){
+        Optional<Account> account = accountRepository.findById(id);
+        return account.map(accountMapper::toDto).orElse(null);
 
     }
-
-    public Account update(Account account) {
-        return accountRepository.save(account);
+    public AccountResponseDTO update(AccountRequestDTO accountRequestDTO) {
+        accountRepository.save(accountMapper.toEntity(accountRequestDTO));
+        return accountMapper.toDto(accountMapper.toEntity(accountRequestDTO));
     }
 
-    public void delete(Long id) {
-        accountRepository.deleteById(id);
-    }
+        public HttpStatus delete(Long id){
+            accountRepository.deleteById(id);
+            return HttpStatus.OK;
+        }
 }

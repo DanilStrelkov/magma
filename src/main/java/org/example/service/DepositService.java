@@ -3,7 +3,7 @@ package org.example.service;
 import lombok.AllArgsConstructor;
 import org.example.mapper.DepositMapper;
 import org.example.model.dto.request.DepositRequestDTO;
-import org.example.model.dto.response.DepositResponceDTO;
+import org.example.model.dto.response.DepositResponseDTO;
 import org.example.model.entity.Deposit;
 import org.example.model.enumerated.status.DepositStatus;
 import org.example.repository.DepositRepository;
@@ -18,19 +18,19 @@ public class DepositService {
     private final DepositMapper depositMapper;
     private final DepositRepository depositRepository;
 
-    public DepositResponceDTO create(DepositRequestDTO dto){
+    public DepositResponseDTO create(DepositRequestDTO dto){
         return depositMapper.toDto(depositRepository.save(depositMapper.toEntity(dto)));
     }
-    public List<DepositResponceDTO> readAll(){
+    public List<DepositResponseDTO> readAll(){
         return depositMapper.toListDto(depositRepository.findAll());
 
     }
-    public DepositResponceDTO readById(Long id){
+    public DepositResponseDTO readById(Long id){
         Optional<Deposit> deposit = depositRepository.findById(id);
         return deposit.map(depositMapper::toDto).orElse(null);
 
     }
-    public DepositResponceDTO update(DepositRequestDTO depositRequestDTO){
+    public DepositResponseDTO update(DepositRequestDTO depositRequestDTO){
         return depositMapper.toDto(depositRepository.save(depositMapper.toEntity(depositRequestDTO)));
     }
     public HttpStatus updateStatus(Long id, DepositStatus depositStatus){
