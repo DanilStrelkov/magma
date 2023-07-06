@@ -12,8 +12,9 @@ import java.util.List;
 @Component
 public interface ClientMapper {
 
-    Client toEntity(ClientRequestDTO dto);
-    ClientResponseDTO toDto(Client client);
+  Client toEntity(ClientRequestDTO dto);
 
-    List<ClientResponseDTO> toListDto(List<Client> clients);
+  ClientResponseDTO toDto(Client client);
+
+  List<ClientResponseDTO> toListDto(List<Client> clients);
 }

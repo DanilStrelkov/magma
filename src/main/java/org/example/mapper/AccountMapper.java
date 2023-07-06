@@ -11,8 +11,9 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 @Component
 public interface AccountMapper {
-    Account toEntity(AccountRequestDTO dto);
-    AccountResponseDTO toDto(Account account);
+  Account toEntity(AccountRequestDTO dto);
 
-    List<AccountResponseDTO> toListDto(List<Account> accounts);
+  AccountResponseDTO toDto(Account account);
+
+  List<AccountResponseDTO> toListDto(List<Account> accounts);
 }

@@ -10,13 +10,13 @@ import java.util.Date;
 
 @Data
 public class CardResponseDTO {
-    private String cardNumber;
-    private Long moneyAmount;
-    private String cvv;
-    private Date expireDate;
-    private String cardHolder;
-    private Client client;
-    private Account account;
-    private CardStatus status;
-    private CardType type;
+  private String cardNumber;
+  private Long moneyAmount;
+  private String cvv;
+  private Date expireDate;
+  private String cardHolder;
+  private Client client;
+  private Account account;
+  private CardStatus status;
+  private CardType type;
 }

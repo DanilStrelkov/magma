@@ -11,12 +11,12 @@ import java.util.List;
 
 @Data
 public class AccountResponseDTO {
-    private Long moneyAmount;
-    private String secretWord;
-    private AccountStatus status;
-    private LocalDateTime creationDate;
-    private Long depositLimit;
-    private Client client;
-    private List<Card> card;
-    private CurrencyType currencyType;
+  private Long moneyAmount;
+  private String secretWord;
+  private AccountStatus status;
+  private LocalDateTime creationDate;
+  private Long depositLimit;
+  private Client client;
+  private List<Card> card;
+  private CurrencyType currencyType;
 }

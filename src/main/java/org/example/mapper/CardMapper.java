@@ -11,8 +11,9 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 @Component
 public interface CardMapper {
-    Card toEntity(CardRequestDTO dto);
-    CardResponseDTO toDto(Card card);
+  Card toEntity(CardRequestDTO dto);
 
-    List<CardResponseDTO> toListDto(List<Card> cards);
+  CardResponseDTO toDto(Card card);
+
+  List<CardResponseDTO> toListDto(List<Card> cards);
 }
