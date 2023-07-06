@@ -3,7 +3,7 @@ package org.example.model.dto.response;
 import lombok.Data;
 
 @Data
-public class ClientResponceDTO {
+public class ClientResponseDTO {
     private String firstName;
     private String lastName;
     private String middleName;

@@ -1,11 +1,14 @@
 package org.example.service;
 
 import lombok.AllArgsConstructor;
+import org.example.mapper.CardMapper;
 import org.example.model.dto.request.CardRequestDTO;
+import org.example.model.dto.response.CardResponseDTO;
 import org.example.model.entity.Account;
 import org.example.model.entity.Card;
 import org.example.repository.AccountRepository;
 import org.example.repository.CardRepository;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,23 +19,28 @@ import java.util.Optional;
 public class CardService {
     private final CardRepository cardRepository;
     private final AccountRepository accountRepository;
+    private final CardMapper cardMapper;
 
-    public Card create(CardRequestDTO dto) {
-        return cardRepository.save(Card.builder()
-                .client(dto.getClient())
-                .cardNumber(dto.getCardNumber())
-                .expireDate(dto.getExpireDate())
-                .cvv(dto.getCvv())
-                .cardHolder(dto.getCardHolder())
-                .type(dto.getType())
-                .account(dto.getAccount())
-                .status(dto.getStatus())
-                .build());
+    public CardResponseDTO create(CardRequestDTO cardRequestDTO){
+        return cardMapper.toDto(cardRepository.save(cardMapper.toEntity(cardRequestDTO)));
+    }
+    public List<CardResponseDTO> readAll(){
+        return cardMapper.toListDto(cardRepository.findAll());
+
+    }
+    public CardResponseDTO readById(Long id){
+        Optional<Card> card = cardRepository.findById(id);
+        return card.map(cardMapper::toDto).orElse(null);
+
+    }
+    public CardResponseDTO update(CardRequestDTO cardRequestDTO) {
+        cardRepository.save(cardMapper.toEntity(cardRequestDTO));
+        return cardMapper.toDto(cardMapper.toEntity(cardRequestDTO));
     }
 
-    public List<Card> readAll() {
-        return cardRepository.findAll();
-
+    public HttpStatus delete(Long id){
+        cardRepository.deleteById(id);
+        return HttpStatus.OK;
     }
     public String getCash(String cardNumber, String cvv, Long moneyAmount) {
         Optional<Card> cardOptional = cardRepository.getCardByCardNumber(cardNumber);
@@ -78,16 +86,4 @@ public class CardService {
                 + account.getMoneyAmount();
     }
 
-    public Optional<Card> readById(Long id) {
-        return cardRepository.findById(id);
-
-    }
-
-    public Card update(Card card) {
-        return cardRepository.save(card);
-    }
-
-    public void delete(Long id) {
-        cardRepository.deleteById(id);
-    }
 }

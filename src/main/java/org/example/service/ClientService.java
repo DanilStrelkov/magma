@@ -3,7 +3,7 @@ package org.example.service;
 import lombok.AllArgsConstructor;
 import org.example.mapper.ClientMapper;
 import org.example.model.dto.request.ClientRequestDTO;
-import org.example.model.dto.response.ClientResponceDTO;
+import org.example.model.dto.response.ClientResponseDTO;
 import org.example.model.entity.Client;
 import org.example.model.enumerated.status.ClientStatus;
 import org.example.repository.ClientRepository;
@@ -20,19 +20,19 @@ public class ClientService {
     private final ClientRepository clientRepository;
     private final ClientMapper clientMapper;
 
-    public ClientResponceDTO create(ClientRequestDTO dto){
+    public ClientResponseDTO create(ClientRequestDTO dto){
         return clientMapper.toDto(clientRepository.save(clientMapper.toEntity(dto)));
     }
-    public List<ClientResponceDTO> readAll(){
+    public List<ClientResponseDTO> readAll(){
         return clientMapper.toListDto(clientRepository.findAll());
 
     }
-    public ClientResponceDTO readById(Long id){
+    public ClientResponseDTO readById(Long id){
         Optional<Client> client = clientRepository.findById(id);
         return client.map(clientMapper::toDto).orElse(null);
 
     }
-    public ClientResponceDTO update(ClientRequestDTO clientRequestDTO){
+    public ClientResponseDTO update(ClientRequestDTO clientRequestDTO){
         clientRepository.save(clientMapper.toEntity(clientRequestDTO));
         return clientMapper.toDto(clientMapper.toEntity(clientRequestDTO));
     }
