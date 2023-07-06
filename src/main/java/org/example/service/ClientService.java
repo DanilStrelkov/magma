@@ -1,25 +1,32 @@
 package org.example.service;
 
 import lombok.AllArgsConstructor;
+import lombok.NonNull;
 import org.example.mapper.ClientMapper;
 import org.example.model.dto.request.ClientRequestDTO;
 import org.example.model.dto.response.ClientResponceDTO;
 import org.example.model.entity.Client;
+import org.example.model.enumerated.Role;
 import org.example.model.enumerated.status.ClientStatus;
 import org.example.repository.ClientRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
 @Service
 @AllArgsConstructor
 public class ClientService {
-
     private final ClientRepository clientRepository;
     private final ClientMapper clientMapper;
 
+    public Optional<Client> getByLogin(@NonNull String login) {
+        return clientRepository.findAll().stream()
+                .filter(user -> login.equals(user.getLogin()))
+                .findFirst();
+    }
     public ClientResponceDTO create(ClientRequestDTO dto){
         return clientMapper.toDto(clientRepository.save(clientMapper.toEntity(dto)));
     }
