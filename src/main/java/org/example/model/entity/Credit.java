@@ -19,42 +19,42 @@ import java.time.LocalDateTime;
 @Builder
 @Table(name = "credit")
 public class Credit {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "id")
+  private Long id;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "client_id", referencedColumnName = "id")
-    @NotNull
-    private Client client;
+  @ManyToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "client_id", referencedColumnName = "id")
+  @NotNull
+  private Client client;
 
-    @Column(name = "credit_status")
-    @Builder.Default
-    @NotNull
-    @Enumerated(EnumType.STRING)
-    private CreditStatus creditStatus = CreditStatus.CLOSED;
+  @Column(name = "credit_status")
+  @Builder.Default
+  @NotNull
+  @Enumerated(EnumType.STRING)
+  private CreditStatus creditStatus = CreditStatus.CLOSED;
 
-    @Column(name = "creation_date")
-    @NotNull
-    @Builder.Default
-    private LocalDateTime creationDate = LocalDateTime.now();
+  @Column(name = "creation_date")
+  @NotNull
+  @Builder.Default
+  private LocalDateTime creationDate = LocalDateTime.now();
 
-    @Column(name = "money_amount")
-    @NotNull
-    private Long moneyAmount;
+  @Column(name = "money_amount")
+  @NotNull
+  private Long moneyAmount;
 
-    @Column(name = "percent")
-    @NotNull
-    private Double percent;
+  @Column(name = "percent")
+  @NotNull
+  private Double percent;
 
-    @Column(name = "currency_type")
-    @NotNull
-    @Enumerated(EnumType.STRING)
-    private CurrencyType currencyType;
+  @Column(name = "currency_type")
+  @NotNull
+  @Enumerated(EnumType.STRING)
+  private CurrencyType currencyType;
 
-    @Column(name = "term_type")
-    @NotNull
-    @Enumerated(EnumType.STRING)
-    private TermType term;
+  @Column(name = "term_type")
+  @NotNull
+  @Enumerated(EnumType.STRING)
+  private TermType term;
 }

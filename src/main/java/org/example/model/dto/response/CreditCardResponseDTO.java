@@ -9,11 +9,11 @@ import java.util.Date;
 
 @Data
 public class CreditCardResponseDTO {
-    private Long cardNumber;
-    private int cvv;
-    private Date expireDate;
-    private String cardHolder;
-    private Client client;
-    private CardStatus status;
-    private CardType type;
+  private Long cardNumber;
+  private int cvv;
+  private Date expireDate;
+  private String cardHolder;
+  private Client client;
+  private CardStatus status;
+  private CardType type;
 }

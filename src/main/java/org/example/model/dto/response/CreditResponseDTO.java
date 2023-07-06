@@ -6,11 +6,11 @@ import org.example.model.enumerated.term.TermType;
 import org.example.model.enumerated.type.CurrencyType;
 
 @Data
-public class CreditResponceDTO {
-    private Long id;
-    private Client client;
-    private Long moneyAmount;
-    private Double percent;
-    private CurrencyType currencyType;
-    private TermType term;
+public class CreditResponseDTO {
+  private Long id;
+  private Client client;
+  private Long moneyAmount;
+  private Double percent;
+  private CurrencyType currencyType;
+  private TermType term;
 }

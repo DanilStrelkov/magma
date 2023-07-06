@@ -2,50 +2,42 @@ package org.example.service;
 
 import lombok.AllArgsConstructor;
 import org.example.mapper.CreditMapper;
+import org.example.model.dto.request.CreditRequestDTO;
+import org.example.model.dto.response.CreditResponseDTO;
 import org.example.model.entity.Credit;
-import org.example.model.enumerated.status.CreditStatus;
 import org.example.repository.CreditRepository;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Service
 @AllArgsConstructor
 public class CreditService {
-    private final CreditMapper creditMapper;
-    private final CreditRepository creditRepository;
+  private final CreditMapper creditMapper;
+  private final CreditRepository creditRepository;
 
-    public Credit create(Credit dto){
-        return creditRepository.save(creditMapper.toEntity(dto));
-    }
-    public List<Credit> readAll(){
-        return creditRepository.findAll();
+  public CreditResponseDTO create(CreditRequestDTO dto) {
+    return creditMapper.toDto(creditRepository.save(creditMapper.toEntity(dto)));
+  }
 
-    }
-    public Optional<Credit> readById(Long id) {
-        try {
-            return creditRepository.findById(id);
-        } catch (NoSuchElementException e) {
-            return Optional.empty();
-        }
-    }
-    public Credit update(Credit credit){
-        return creditRepository.save(credit);
-    }
-    public Credit updateStatus(Long id, CreditStatus creditStatus){
-        Optional<Credit> optionalCredit = creditRepository.findById(id);
-        if (optionalCredit.isPresent()) {
-            Credit credit = optionalCredit.get();
-            credit.setCreditStatus(creditStatus);
-            return creditRepository.save(credit);
-        } else {
-            throw new NoSuchElementException("Кредит не найден");
-        }
-    }
+  public List<CreditResponseDTO> readAll() {
+    return creditMapper.toListDto(creditRepository.findAll());
+  }
 
-    public void delete(Long id){
-        creditRepository.deleteById(id);
-    }
+  public CreditResponseDTO readById(Long id) {
+    Optional<Credit> credit = creditRepository.findById(id);
+    return credit.map(creditMapper::toDto).orElse(null);
+  }
+
+  public CreditResponseDTO update(CreditRequestDTO creditRequestDTO) {
+    creditRepository.save(creditMapper.toEntity(creditRequestDTO));
+    return creditMapper.toDto(creditMapper.toEntity(creditRequestDTO));
+  }
+
+  public HttpStatus delete(Long id) {
+    creditRepository.deleteById(id);
+    return HttpStatus.OK;
+  }
 }
