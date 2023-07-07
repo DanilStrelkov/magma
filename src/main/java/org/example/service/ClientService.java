@@ -32,7 +32,6 @@ public class ClientService {
   public ClientResponseDTO readById(Long id) {
     Optional<Client> client = clientRepository.findById(id);
     return client.map(clientMapper::toDto).orElse(null);
-
   }
 
   public ClientResponseDTO update(ClientRequestDTO clientRequestDTO) {

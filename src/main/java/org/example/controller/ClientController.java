@@ -13,7 +13,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("/client")
+@RequestMapping("/api/client")
 @AllArgsConstructor
 public class ClientController {
   private ClientService clientService;
@@ -30,7 +30,7 @@ public class ClientController {
   }
 
   @GetMapping("/{id}")
-  public ResponseEntity<ClientResponseDTO> readByid(@PathVariable Long id) {
+  public ResponseEntity<ClientResponseDTO> readById(@PathVariable Long id) {
     return new ResponseEntity<>(clientService.readById(id), HttpStatus.OK);
 
   }
