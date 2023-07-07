@@ -22,8 +22,6 @@ public class Client {
   private String lastName;
   @Column(name = "middle_name")
   private String middleName;
-  @Column(name = "middle_name")
-  private String phoneNumber;
   @Column(name = "address")
   private String address;
   @Column(name = "phone")
