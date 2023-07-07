@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/credits")
+@RequestMapping("/api/credits")
 @AllArgsConstructor
 public class CreditController {
   private final CreditService creditService;
@@ -31,7 +31,7 @@ public class CreditController {
     return new ResponseEntity<>(creditService.readById(id), HttpStatus.OK);
   }
 
-  @PutMapping("/{id}")
+  @PutMapping()
   public ResponseEntity<CreditResponseDTO> update(@RequestBody CreditRequestDTO creditRequestDTO) {
     return new ResponseEntity<>(creditService.update(creditRequestDTO), HttpStatus.OK);
   }

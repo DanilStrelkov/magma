@@ -58,12 +58,4 @@ public class CreditCard {
   @Enumerated(EnumType.STRING)
   private CardType type;
 
-  @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "account_id", referencedColumnName = "id")
-  @NotNull
-  private Account account;
-
-  public @NotNull Account getAccount() {
-    return account;
-  }
 }

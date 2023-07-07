@@ -7,18 +7,16 @@ import org.example.model.enumerated.status.CardStatus;
 import org.example.model.enumerated.type.CardType;
 
 import java.util.Date;
+
 @Data
 public class CreditCardRequestDTO {
-    private Long cardNumber;
-    private int cvv;
-    private Date expireDate;
-    private String cardHolder;
-    private Client client;
-    private CardStatus status;
-    private CardType type;
-    private Account account;
+  private Long cardNumber;
+  private int cvv;
+  private Date expireDate;
+  private String cardHolder;
+  private Client client;
+  private CardStatus status;
+  private CardType type;
+  private Account account;
 
-    public Account getAccount() {
-        return account;
-    }
 }
