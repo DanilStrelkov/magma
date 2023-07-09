@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.example.model.TransactionParticipant;
 import org.example.model.enumerated.type.CurrencyType;
 
 @Entity
@@ -24,11 +23,12 @@ public class Transaction {
   @Column(name = "currency_type")
   @Enumerated(EnumType.STRING)
   private CurrencyType currencyType;
+
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "from")
+  @JoinColumn(name = "transaction_participant_from", referencedColumnName = "id")
   private TransactionParticipant from;
-  @OneToMany(fetch = FetchType.EAGER)
-  @JoinColumn(name = "to", referencedColumnName = "id")
+  @ManyToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "transaction_participant_to", referencedColumnName = "id")
   private TransactionParticipant to;
 
 }

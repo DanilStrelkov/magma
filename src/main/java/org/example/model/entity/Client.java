@@ -3,6 +3,7 @@ package org.example.model.entity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
+import org.example.model.enumerated.Role;
 import org.example.model.enumerated.status.ClientStatus;
 
 @Entity
@@ -33,4 +34,14 @@ public class Client {
   @Column(name = "client_status")
   @Enumerated(EnumType.STRING)
   private ClientStatus clientStatus = ClientStatus.ACTIVE;
+  @NotNull
+  @Builder.Default
+  @Column(name = "client_role")
+  @Enumerated(EnumType.STRING)
+  private Role roles = Role.USER;
+  @Column(name = "password")
+  private String password;
+  @Column(name = "login")
+  private String login;
+
 }

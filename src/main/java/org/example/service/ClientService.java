@@ -1,6 +1,7 @@
 package org.example.service;
 
 import lombok.AllArgsConstructor;
+import lombok.NonNull;
 import org.example.mapper.ClientMapper;
 import org.example.model.dto.request.ClientRequestDTO;
 import org.example.model.dto.response.ClientResponseDTO;
@@ -34,6 +35,11 @@ public class ClientService {
     return client.map(clientMapper::toDto).orElse(null);
   }
 
+  public Optional<Client> getByLogin(@NonNull String login) {
+    return clientRepository.findAll().stream()
+            .filter(user -> login.equals(user.getLogin()))
+            .findFirst();
+  }
   public ClientResponseDTO update(ClientRequestDTO clientRequestDTO) {
     clientRepository.save(clientMapper.toEntity(clientRequestDTO));
     return clientMapper.toDto(clientMapper.toEntity(clientRequestDTO));
