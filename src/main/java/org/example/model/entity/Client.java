@@ -34,8 +34,8 @@ public class Client {
   @Column(name = "client_status")
   @Enumerated(EnumType.STRING)
   private ClientStatus clientStatus = ClientStatus.ACTIVE;
-  @NotNull
   @Builder.Default
+  @NotNull
   @Column(name = "client_role")
   @Enumerated(EnumType.STRING)
   private Role roles = Role.USER;
