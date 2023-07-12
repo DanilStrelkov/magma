@@ -41,9 +41,16 @@ public class ClientService {
             .filter(user -> login.equals(user.getLogin()))
             .findFirst();
   }
-  public ClientResponseDTO update(ClientRequestDTO clientRequestDTO) {
-    clientRepository.save(clientMapper.toEntity(clientRequestDTO));
-    return clientMapper.toDto(clientMapper.toEntity(clientRequestDTO));
+  public ClientResponseDTO update(Long id ,ClientRequestDTO clientRequestDTO) {
+    if(clientRepository.existsById(id)) {
+      Client client = clientMapper.toEntity(clientRequestDTO);
+      client.setId(id);
+      return clientMapper.toDto(clientRepository.save(client));
+    }
+    else{
+      //exception
+      return null;
+    }
   }
 
   public HttpStatus updateStatus(Long id, ClientStatus clientStatus) {

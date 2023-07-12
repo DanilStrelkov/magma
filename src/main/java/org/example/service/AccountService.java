@@ -32,10 +32,16 @@ public class AccountService {
     return account.map(accountMapper::toDto).orElse(null);
 
   }
-
-  public AccountResponseDTO update(AccountRequestDTO accountRequestDTO) {
-    accountRepository.save(accountMapper.toEntity(accountRequestDTO));
-    return accountMapper.toDto(accountMapper.toEntity(accountRequestDTO));
+  public AccountResponseDTO update(Long id ,AccountRequestDTO accountRequestDTO) {
+    if(accountRepository.existsById(id)) {
+      Account account = accountMapper.toEntity(accountRequestDTO);
+      account.setId(id);
+      return accountMapper.toDto(accountRepository.save(account));
+    }
+    else{
+      //exception
+      return null;
+    }
   }
 
   public HttpStatus delete(Long id) {

@@ -34,9 +34,16 @@ public class DepositService {
     return deposit.map(depositMapper::toDto).orElse(null);
 
   }
-
-  public DepositResponseDTO update(DepositRequestDTO depositRequestDTO) {
-    return depositMapper.toDto(depositRepository.save(depositMapper.toEntity(depositRequestDTO)));
+  public DepositResponseDTO update(Long id , DepositRequestDTO depositRequestDTO) {
+    if(depositRepository.existsById(id)) {
+      Deposit deposit = depositMapper.toEntity(depositRequestDTO);
+      deposit.setId(id);
+      return depositMapper.toDto(depositRepository.save(deposit));
+    }
+    else{
+      //exception
+      return null;
+    }
   }
 
   public HttpStatus updateStatus(Long id, DepositStatus depositStatus) {

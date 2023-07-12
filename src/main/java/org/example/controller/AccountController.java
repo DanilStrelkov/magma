@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/account")
+@RequestMapping("/account")
 @AllArgsConstructor
 public class AccountController {
   private AccountService accountService;
@@ -33,9 +33,9 @@ public class AccountController {
 
   }
 
-  @PutMapping
-  public ResponseEntity<AccountResponseDTO> update(@RequestBody AccountRequestDTO accountRequestDTO) {
-    return new ResponseEntity<>(accountService.update(accountRequestDTO), HttpStatus.OK);
+  @PutMapping("/{id}")
+  public ResponseEntity<AccountResponseDTO> update(@PathVariable Long id ,@RequestBody AccountRequestDTO accountRequestDTO) {
+    return new ResponseEntity<>(accountService.update(id,accountRequestDTO), HttpStatus.OK);
   }
 
   @DeleteMapping("/{id}")

@@ -31,10 +31,11 @@ public class CreditController {
     return new ResponseEntity<>(creditService.readById(id), HttpStatus.OK);
   }
 
-  @PutMapping()
-  public ResponseEntity<CreditResponseDTO> update(@RequestBody CreditRequestDTO creditRequestDTO) {
-    return new ResponseEntity<>(creditService.update(creditRequestDTO), HttpStatus.OK);
+  @PutMapping("/{id}")
+  public ResponseEntity<CreditResponseDTO> update(@PathVariable Long id, @RequestBody CreditRequestDTO creditRequestDTO) {
+    return new ResponseEntity<>(creditService.update(id, creditRequestDTO), HttpStatus.OK);
   }
+
 
   @DeleteMapping("/{id}")
   public HttpStatus delete(@PathVariable Long id) {

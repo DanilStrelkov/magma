@@ -31,10 +31,16 @@ public class CreditService {
     Optional<Credit> credit = creditRepository.findById(id);
     return credit.map(creditMapper::toDto).orElse(null);
   }
-
-  public CreditResponseDTO update(CreditRequestDTO creditRequestDTO) {
-    creditRepository.save(creditMapper.toEntity(creditRequestDTO));
-    return creditMapper.toDto(creditMapper.toEntity(creditRequestDTO));
+  public CreditResponseDTO update(Long id , CreditRequestDTO creditRequestDTO) {
+    if(creditRepository.existsById(id)) {
+      Credit credit = creditMapper.toEntity(creditRequestDTO);
+      credit.setId(id);
+      return creditMapper.toDto(creditRepository.save(credit));
+    }
+    else{
+      //exception
+      return null;
+    }
   }
 
   public HttpStatus delete(Long id) {
