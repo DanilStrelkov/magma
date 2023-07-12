@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import org.example.mapper.CreditCardMapper;
 import org.example.model.dto.request.CreditCardRequestDTO;
 import org.example.model.dto.response.CreditCardResponseDTO;
+import org.example.model.entity.Client;
 import org.example.model.entity.CreditCard;
 import org.example.repository.CreditCardRepository;
 import org.springframework.http.HttpStatus;
@@ -37,7 +38,11 @@ public class CreditCardService {
   }
 
   public HttpStatus delete(Long id) {
-    creditCardRepository.deleteById(id);
-    return HttpStatus.OK;
+    var creditCardOptional = creditCardRepository.findById(id);
+    if (creditCardOptional.isPresent()) {
+      CreditCard creditCard = creditCardOptional.get();
+      creditCard.setIsDeleted(true);
+    }
+    return HttpStatus.I_AM_A_TEAPOT;
   }
 }

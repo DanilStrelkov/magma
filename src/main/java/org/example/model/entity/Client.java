@@ -33,4 +33,8 @@ public class Client {
   @Column(name = "client_status")
   @Enumerated(EnumType.STRING)
   private ClientStatus clientStatus = ClientStatus.ACTIVE;
+  @Column(name = "deleted")
+  @NotNull
+  @Builder.Default
+  private Boolean isDeleted = false;
 }
