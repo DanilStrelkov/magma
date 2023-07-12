@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import org.example.mapper.DepositMapper;
 import org.example.model.dto.request.DepositRequestDTO;
 import org.example.model.dto.response.DepositResponseDTO;
+import org.example.model.entity.Credit;
 import org.example.model.entity.Deposit;
 import org.example.model.enumerated.status.DepositStatus;
 import org.example.repository.DepositRepository;
@@ -56,7 +57,11 @@ public class DepositService {
   }
 
   public HttpStatus delete(Long id) {
-    depositRepository.deleteById(id);
-    return HttpStatus.OK;
+    var depositOptional = depositRepository.findById(id);
+    if (depositOptional.isPresent()) {
+      Deposit deposit = depositOptional.get();
+      deposit.setIsDeleted(true);
+    }
+    return HttpStatus.I_AM_A_TEAPOT;
   }
 }

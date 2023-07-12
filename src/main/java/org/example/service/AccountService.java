@@ -45,7 +45,11 @@ public class AccountService {
   }
 
   public HttpStatus delete(Long id) {
-    accountRepository.deleteById(id);
-    return HttpStatus.OK;
+    var accountOptional = accountRepository.findById(id);
+    if (accountOptional.isPresent()) {
+      Account account = accountOptional.get();
+      account.setIsDeleted(true);
+    }
+    return HttpStatus.I_AM_A_TEAPOT;
   }
 }

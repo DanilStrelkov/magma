@@ -5,6 +5,7 @@ import org.example.mapper.CreditMapper;
 import org.example.model.dto.request.CreditRequestDTO;
 import org.example.model.dto.response.CreditResponseDTO;
 import org.example.model.entity.Credit;
+import org.example.model.entity.CreditCard;
 import org.example.repository.CreditRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -43,7 +44,11 @@ public class CreditService {
   }
 
   public HttpStatus delete(Long id) {
-    creditRepository.deleteById(id);
-    return HttpStatus.OK;
+    var creditOptional = creditRepository.findById(id);
+    if (creditOptional.isPresent()) {
+      Credit credit = creditOptional.get();
+      credit.setIsDeleted(true);
+    }
+    return HttpStatus.I_AM_A_TEAPOT;
   }
 }

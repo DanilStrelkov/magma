@@ -58,6 +58,9 @@ public class Deposit {
   @Column(name = "expire_date")
   @Builder.Default
   private LocalDateTime expireDate = LocalDateTime.now();
-
+  @Column(name = "deleted")
+  @NotNull
+  @Builder.Default
+  private Boolean isDeleted = false;
 
 }

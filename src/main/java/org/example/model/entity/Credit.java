@@ -57,4 +57,8 @@ public class Credit {
   @NotNull
   @Enumerated(EnumType.STRING)
   private TermLength term;
+  @Column(name = "deleted")
+  @NotNull
+  @Builder.Default
+  private Boolean isDeleted = false;
 }
