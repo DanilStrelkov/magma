@@ -5,6 +5,7 @@ import lombok.NonNull;
 import org.example.mapper.ClientMapper;
 import org.example.model.dto.request.ClientRequestDTO;
 import org.example.model.dto.response.ClientResponseDTO;
+import org.example.model.entity.Card;
 import org.example.model.entity.Client;
 import org.example.model.enumerated.status.ClientStatus;
 import org.example.repository.ClientRepository;
@@ -56,7 +57,11 @@ public class ClientService {
   }
 
   public HttpStatus delete(Long id) {
-    clientRepository.deleteById(id);
-    return HttpStatus.OK;
+    var clientOptional = clientRepository.findById(id);
+    if (clientOptional.isPresent()) {
+      Client client = clientOptional.get();
+      client.setIsDeleted(true);
+    }
+    return HttpStatus.I_AM_A_TEAPOT;
   }
 }

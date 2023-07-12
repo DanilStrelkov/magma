@@ -42,9 +42,13 @@ public class CardService {
   }
 
   public HttpStatus delete(Long id) {
-    cardRepository.deleteById(id);
-    return HttpStatus.OK;
-  }
+    var cardOptional = cardRepository.findById(id);
+    if (cardOptional.isPresent()) {
+      Card card = cardOptional.get();
+      card.setIsDeleted(true);
+    }
+      return HttpStatus.I_AM_A_TEAPOT;
+    }
 
   public String getCash(String cardNumber, String cvv, Long moneyAmount) {
     Optional<Card> cardOptional = cardRepository.getCardByCardNumber(cardNumber);

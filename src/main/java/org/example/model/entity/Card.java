@@ -57,4 +57,8 @@ public class Card {
   @NotNull
   @Enumerated(EnumType.STRING)
   private CardType type;
+  @Column(name = "deleted")
+  @NotNull
+  @Builder.Default
+  private Boolean isDeleted = false;
 }
