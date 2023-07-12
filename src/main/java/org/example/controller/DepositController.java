@@ -34,9 +34,9 @@ public class DepositController {
 
   }
 
-  @PutMapping
-  public ResponseEntity<DepositResponseDTO> update(@RequestBody DepositRequestDTO depositRequestDTO) {
-    return new ResponseEntity<>(depositService.update(depositRequestDTO), HttpStatus.OK);
+  @PutMapping("/{id}")
+  public ResponseEntity<DepositResponseDTO> update(@PathVariable Long id, @RequestBody DepositRequestDTO depositRequestDTO) {
+    return new ResponseEntity<>(depositService.update(id, depositRequestDTO), HttpStatus.OK);
   }
 
   @PutMapping("/{id}/{depositStatus}")

@@ -31,10 +31,16 @@ public class CreditCardService {
     Optional<CreditCard> creditCard = creditCardRepository.findById(id);
     return creditCard.map(creditCardMapper::toDto).orElse(null);
   }
-
-  public CreditCardResponseDTO update(CreditCardRequestDTO creditRequestDTO) {
-    creditCardRepository.save(creditCardMapper.toEntity(creditRequestDTO));
-    return creditCardMapper.toDto(creditCardMapper.toEntity(creditRequestDTO));
+  public CreditCardResponseDTO update(Long id , CreditCardRequestDTO creditCardRequestDTO) {
+    if(creditCardRepository.existsById(id)) {
+      CreditCard creditCard = creditCardMapper.toEntity(creditCardRequestDTO);
+      creditCard.setId(id);
+      return creditCardMapper.toDto(creditCardRepository.save(creditCard));
+    }
+    else{
+      //exception
+      return null;
+    }
   }
 
   public HttpStatus delete(Long id) {
