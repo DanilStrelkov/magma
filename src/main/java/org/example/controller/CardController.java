@@ -46,9 +46,9 @@ public class CardController {
 
   }
 
-  @PutMapping
-  public ResponseEntity<CardResponseDTO> update(@RequestBody CardRequestDTO cardRequestDTO) {
-    return new ResponseEntity<>(cardService.update(cardRequestDTO), HttpStatus.OK);
+  @PutMapping("/{id}")
+  public ResponseEntity<CardResponseDTO> update(@PathVariable Long id, @RequestBody CardRequestDTO cardRequestDTO) {
+    return new ResponseEntity<>(cardService.update(id,cardRequestDTO), HttpStatus.OK);
   }
 
   @DeleteMapping("/{id}")

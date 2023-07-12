@@ -13,7 +13,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("/api/client")
+@RequestMapping("/client")
 @AllArgsConstructor
 public class ClientController {
   private ClientService clientService;
@@ -35,9 +35,9 @@ public class ClientController {
 
   }
 
-  @PutMapping
-  public ResponseEntity<ClientResponseDTO> update(@RequestBody ClientRequestDTO clientRequestDTO) {
-    return new ResponseEntity<>(clientService.update(clientRequestDTO), HttpStatus.OK);
+  @PutMapping("/{id}")
+  public ResponseEntity<ClientResponseDTO> update(@PathVariable Long id ,@RequestBody ClientRequestDTO clientRequestDTO) {
+    return new ResponseEntity<>(clientService.update(id,clientRequestDTO), HttpStatus.OK);
   }
 
   @PutMapping("/{id}/{clientStatus}")

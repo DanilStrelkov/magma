@@ -35,10 +35,16 @@ public class CardService {
     return card.map(cardMapper::toDto).orElse(null);
 
   }
-
-  public CardResponseDTO update(CardRequestDTO cardRequestDTO) {
-    cardRepository.save(cardMapper.toEntity(cardRequestDTO));
-    return cardMapper.toDto(cardMapper.toEntity(cardRequestDTO));
+  public CardResponseDTO update(Long id , CardRequestDTO cardRequestDTO) {
+    if(cardRepository.existsById(id)) {
+      Card card = cardMapper.toEntity(cardRequestDTO);
+      card.setId(id);
+      return cardMapper.toDto(cardRepository.save(card));
+    }
+    else{
+      //exception
+      return null;
+    }
   }
 
   public HttpStatus delete(Long id) {

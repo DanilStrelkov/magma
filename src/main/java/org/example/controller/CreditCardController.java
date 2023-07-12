@@ -31,9 +31,9 @@ public class CreditCardController {
     return new ResponseEntity<>(creditCardService.readById(id), HttpStatus.OK);
   }
 
-  @PutMapping
-  public ResponseEntity<CreditCardResponseDTO> update(@RequestBody CreditCardRequestDTO creditCardRequestDTO) {
-    return new ResponseEntity<>(creditCardService.update(creditCardRequestDTO), HttpStatus.OK);
+  @PutMapping("/{id}")
+  public ResponseEntity<CreditCardResponseDTO> update(@PathVariable Long id, @RequestBody CreditCardRequestDTO creditCardRequestDTO) {
+    return new ResponseEntity<>(creditCardService.update(id, creditCardRequestDTO), HttpStatus.OK);
   }
 
   @DeleteMapping("/{id}")
