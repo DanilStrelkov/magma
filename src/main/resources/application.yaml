@@ -5,9 +5,9 @@ spring:
     url: jdbc:postgresql://localhost:5432/magma
   jpa:
     hibernate:
-      ddl-auto: update
-
-
+      ddl-auto: validate
+  liquibase:
+    enabled: true
 
 
 server:

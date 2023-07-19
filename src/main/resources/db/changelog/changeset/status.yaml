@@ -1,0 +1,41 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: Maxim
+      changes:
+        - sql:
+            sql: DROP TYPE IF EXISTS account_status CASCADE;
+              CREATE TYPE account_status AS ENUM ('OPEN', 'CLOSED', 'FROZEN');
+
+  - changeSet:
+      id: 2
+      author: Maxim
+      changes:
+        - sql:
+            sql: DROP TYPE IF EXISTS card_status CASCADE;
+              CREATE TYPE card_status AS ENUM ('ACTIVE', 'FROZEN', 'EXPIRED');
+
+  - changeSet:
+      id: 3
+      author: Maxim
+      changes:
+        - sql:
+            sql: DROP TYPE IF EXISTS client_status CASCADE;
+              CREATE TYPE client_status AS ENUM ('ACTIVE', 'BLOCKED', 'INACTIVE');
+
+  - changeSet:
+      id: 4
+      author: Maxim
+      changes:
+        - sql:
+            sql: DROP TYPE IF EXISTS credit_status CASCADE;
+              CREATE TYPE credit_status AS ENUM ('OPEN', 'CLOSED', 'FROZEN');
+
+  - changeSet:
+      id: 5
+      author: Maxim
+      changes:
+        - sql:
+            sql: DROP TYPE IF EXISTS deposit_status CASCADE;
+              CREATE TYPE deposit_status AS ENUM ('OPEN', 'CLOSED', 'FROZEN');
+
