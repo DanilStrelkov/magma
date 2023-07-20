@@ -8,6 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.example.model.enumerated.status.CreditStatus;
 import org.example.model.enumerated.term.TermLength;
+import org.example.model.enumerated.type.CreditType;
 import org.example.model.enumerated.type.CurrencyType;
 
 import java.time.LocalDateTime;
@@ -57,6 +58,12 @@ public class Credit {
   @NotNull
   @Enumerated(EnumType.STRING)
   private TermLength term;
+
+  @Column(name = "credit_type")
+  @NotNull
+  @Enumerated(EnumType.STRING)
+  private CreditType type;
+
   @Column(name = "deleted")
   @NotNull
   @Builder.Default

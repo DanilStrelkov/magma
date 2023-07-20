@@ -1,0 +1,40 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: Maxim
+      changes:
+        - sql:
+            sql: DROP TYPE IF EXISTS card_type CASCADE;
+              CREATE TYPE card_type AS ENUM ('VIRTUAL', 'PHYSICAL');
+
+  - changeSet:
+      id: 2
+      author: Maxim
+      changes:
+        - sql:
+            sql: DROP TYPE IF EXISTS credit_type CASCADE;
+              CREATE TYPE credit_type AS ENUM ('TARGET', 'MORTGAGE');
+
+  - changeSet:
+      id: 3
+      author: Maxim
+      changes:
+        - sql:
+            sql: DROP TYPE IF EXISTS currency_type CASCADE;
+              CREATE TYPE currency_type AS ENUM ('RUBLE', 'DOLLAR', 'EURO');
+
+  - changeSet:
+      id: 4
+      author: Maxim
+      changes:
+        - sql:
+            sql: DROP TYPE IF EXISTS deposit_type CASCADE;
+              CREATE TYPE deposit_type AS ENUM ('REPLENISHABLE', 'NONREPLENISHABLE');
+
+  - changeSet:
+      id: 5
+      author: Maxim
+      changes:
+        - sql:
+            sql: DROP TYPE IF EXISTS client_role CASCADE;
+              CREATE TYPE client_role AS ENUM ('ADMIN', 'USER');

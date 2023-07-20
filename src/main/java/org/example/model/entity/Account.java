@@ -30,7 +30,7 @@ public class Account {
     @NotBlank
     @NotNull
     private String secretWord;
-    @Column(name = "status")
+    @Column(name = "account_status")
     @Builder.Default
     @NotNull
     @Enumerated(EnumType.STRING)

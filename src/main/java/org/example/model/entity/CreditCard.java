@@ -47,13 +47,13 @@ public class CreditCard {
   @JoinColumn(name = "client_id", referencedColumnName = "id")
   private Client client;
 
-  @Column(name = "status")
+  @Column(name = "card_status")
   @Builder.Default
   @NotNull
   @Enumerated(EnumType.STRING)
   private CardStatus status = CardStatus.FROZEN;
 
-  @Column(name = "type")
+  @Column(name = "card_type")
   @NotNull
   @Enumerated(EnumType.STRING)
   private CardType type;
