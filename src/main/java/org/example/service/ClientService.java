@@ -5,7 +5,6 @@ import lombok.NonNull;
 import org.example.mapper.ClientMapper;
 import org.example.model.dto.request.ClientRequestDTO;
 import org.example.model.dto.response.ClientResponseDTO;
-import org.example.model.entity.Card;
 import org.example.model.entity.Client;
 import org.example.model.enumerated.status.ClientStatus;
 import org.example.repository.ClientRepository;
@@ -58,7 +57,7 @@ public class ClientService {
     if (client.isEmpty()) {
       return HttpStatus.I_AM_A_TEAPOT;
     }
-    client.get().setClientStatus(clientStatus);
+    client.get().setStatus(clientStatus);
     clientRepository.save(client.get());
     return HttpStatus.OK;
   }

@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import org.example.mapper.CreditCardMapper;
 import org.example.model.dto.request.CreditCardRequestDTO;
 import org.example.model.dto.response.CreditCardResponseDTO;
-import org.example.model.entity.Client;
 import org.example.model.entity.CreditCard;
 import org.example.repository.CreditCardRepository;
 import org.springframework.http.HttpStatus;

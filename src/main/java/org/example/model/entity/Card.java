@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 import org.example.model.enumerated.status.CardStatus;
 import org.example.model.enumerated.type.CardType;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Entity
 @NoArgsConstructor
@@ -28,14 +28,14 @@ public class Card {
   @NotBlank
   private String cardNumber;
   @Column(name = "money_amount")
-  private Long moneyAmount;
+  private int moneyAmount;
   @Column(name = "cvv")
   @NotNull
   @NotBlank
   private String cvv;
   @Column(name = "expire_date")
   @NotNull
-  private Date expireDate;
+  private LocalDateTime expireDate;
   @Column(name = "card_holder")
   @NotNull
   @NotBlank
@@ -61,4 +61,7 @@ public class Card {
   @NotNull
   @Builder.Default
   private Boolean isDeleted = false;
+  @Column(name = "number")
+  @NotNull
+  private String number;
 }
