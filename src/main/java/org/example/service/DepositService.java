@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import org.example.mapper.DepositMapper;
 import org.example.model.dto.request.DepositRequestDTO;
 import org.example.model.dto.response.DepositResponseDTO;
-import org.example.model.entity.Credit;
 import org.example.model.entity.Deposit;
 import org.example.model.enumerated.status.DepositStatus;
 import org.example.repository.DepositRepository;
@@ -51,7 +50,7 @@ public class DepositService {
     if (deposit.isEmpty()) {
       return HttpStatus.I_AM_A_TEAPOT;
     }
-    deposit.get().setDepositStatus(depositStatus);
+    deposit.get().setStatus(depositStatus);
     depositRepository.save(deposit.get());
     return HttpStatus.OK;
   }

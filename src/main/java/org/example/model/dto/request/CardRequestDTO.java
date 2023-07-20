@@ -7,15 +7,12 @@ import org.example.model.entity.Client;
 import org.example.model.enumerated.status.CardStatus;
 import org.example.model.enumerated.type.CardType;
 
-import java.util.Date;
-
 @Data
 @Builder
 public class CardRequestDTO {
   private String cardNumber;
-  private Long moneyAmount;
+  private int moneyAmount;
   private String cvv;
-  private Date expireDate;
   private String cardHolder;
   private Client client;
   private Account account;

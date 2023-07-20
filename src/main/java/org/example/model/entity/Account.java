@@ -11,7 +11,6 @@ import org.example.model.enumerated.status.AccountStatus;
 import org.example.model.enumerated.type.CurrencyType;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Entity
 @NoArgsConstructor
@@ -40,15 +39,11 @@ public class Account {
     @Builder.Default
     private LocalDateTime creationDate = LocalDateTime.now();
     @Column(name = "deposit_limit")
-    private Long depositLimit;
+    private int depositLimit;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "client_id", referencedColumnName = "id")
     @NotNull
     private Client client;
-    @OneToMany(fetch = FetchType.EAGER)
-    @JoinColumn(name = "card_id", referencedColumnName = "id")
-    @NotNull
-    private List<Card> card;
     @Column(name = "currency_type")
     @NotNull
     @Enumerated(EnumType.STRING)

@@ -8,7 +8,7 @@ import org.example.model.enumerated.type.CurrencyType;
 @Data
 public class CreditRequestDTO {
   private Client client;
-  private Long moneyAmount;
+  private int moneyAmount;
   private Double percent;
   private CurrencyType currencyType;
   private TermLength term;

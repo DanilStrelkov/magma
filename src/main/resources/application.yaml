@@ -5,9 +5,9 @@ spring:
     url: jdbc:postgresql://localhost:5432/magma
   jpa:
     hibernate:
-      ddl-auto: validate
+      ddl-auto: create
   liquibase:
-    enabled: true
+    enabled: false
 
 
 server:
@@ -16,3 +16,13 @@ server:
 #  secret:
 #    access: qBTmv4oXFFR2GwjexDJ4t6fsIUIUhhXqlktXjXdkcyygs8nPVEwMfo29VDRRepYDVV5IkIxBMzr7OEHXEHd37w==
 #    refresh: zL1HB3Pch05Avfynovxrf/kpF9O2m4NCWKJUjEp27s9J2jEG3ifiKCGylaZ8fDeoONSTJP/wAzKawB8F9rOMNg==
+
+test-data:
+  generate: true
+  client: 100
+  account: 100
+  deposit: 100
+  card: 100
+  credit: 100
+  creditCard: 100
+

@@ -5,13 +5,13 @@ import org.example.model.entity.Client;
 import org.example.model.enumerated.status.CardStatus;
 import org.example.model.enumerated.type.CardType;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Data
 public class CreditCardResponseDTO {
-  private Long cardNumber;
-  private int cvv;
-  private Date expireDate;
+  private String cardNumber;
+  private String cvv;
+  private LocalDateTime expireDate;
   private String cardHolder;
   private Client client;
   private CardStatus status;
