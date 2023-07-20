@@ -1,0 +1,8 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: Maxim
+      changes:
+        - sql:
+            sql: DROP TYPE IF EXISTS term_length CASCADE;
+              CREATE TYPE term_length AS ENUM ('ONE_YEAR', 'TWO_YEARS', 'THREE_YEARS');
