@@ -7,8 +7,6 @@ import org.example.model.dto.request.TransactionParticipantRequestDTO;
 import org.example.model.dto.response.TransactionResponseDTO;
 import org.example.model.entity.Transaction;
 import org.example.model.TransactionParticipant;
-import org.example.model.enumerated.type.CurrencyType;
-import org.example.repository.DepositRepository;
 import org.example.repository.TransactionRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -23,6 +21,7 @@ public class TransactionService {
   private final TransactionRepository transactionRepository;
   private final TransactionParticipantMapper transactionParticipantMapper;
   private final TransactionParticipantService transactionParticipantService;
+
   public List<TransactionResponseDTO> readAll() {
     return transactionMapper.toListDto(transactionRepository.findAll());
 
@@ -32,17 +31,17 @@ public class TransactionService {
     Optional<Transaction> transaction = transactionRepository.findById(id);
     return transaction.map(transactionMapper::toDto).orElse(null);
   }
-  public HttpStatus moneyTransfer(TransactionParticipantRequestDTO fromDTO, TransactionParticipantRequestDTO toDTO, Long moneyAmount) {
+
+  public HttpStatus moneyTransfer(TransactionParticipantRequestDTO fromDTO, TransactionParticipantRequestDTO toDTO, int moneyAmount) {
     TransactionParticipant from = transactionParticipantService.getMoneyAmount(fromDTO);
     TransactionParticipant to = transactionParticipantService.getMoneyAmount(toDTO);
     if (from.getMoneyAmount() > moneyAmount) {
-      from.setMoneyAmount((int) (from.getMoneyAmount() - moneyAmount));
-      to.setMoneyAmount((int) (to.getMoneyAmount() + moneyAmount));
+      from.setMoneyAmount((from.getMoneyAmount() - moneyAmount));
+      to.setMoneyAmount((to.getMoneyAmount() + moneyAmount));
       transactionParticipantService.update(from);
       transactionParticipantService.update(to);
       return HttpStatus.OK;
-    }
-    else {
+    } else {
       return HttpStatus.I_AM_A_TEAPOT;
     }
 
