@@ -25,6 +25,9 @@ public class CreditCard {
   @Column(name = "id")
   private Long id;
 
+  @Column(name = "money_amount")
+  private int moneyAmount;
+
   @Column(name = "card_number")
   private String cardNumber;
 
@@ -61,5 +64,8 @@ public class CreditCard {
   @NotNull
   @Builder.Default
   private Boolean isDeleted = false;
+  @Column(name = "number")
+  @NotNull
+  private String number;
 
 }

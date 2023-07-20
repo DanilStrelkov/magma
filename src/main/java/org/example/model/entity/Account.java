@@ -25,7 +25,7 @@ public class Account {
     @Column(name = "id")
     private Long id;
     @Column(name = "money_amount")
-    private Long moneyAmount;
+    private int moneyAmount;
     @Column(name = "secret_word")
     @NotBlank
     @NotNull
@@ -57,5 +57,8 @@ public class Account {
     @NotNull
     @Builder.Default
     private Boolean isDeleted = false;
+    @Column(name = "number")
+    @NotNull
+    private String number;
 
 }

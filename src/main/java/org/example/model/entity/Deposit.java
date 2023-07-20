@@ -24,7 +24,7 @@ public class Deposit {
   @Column(name = "id")
   private Long id;
   @Column(name = "money_amount")
-  private Long moneyAmount;
+  private int moneyAmount;
   @Builder.Default
   @NotNull
   @Column(name = "currency_type")
@@ -47,7 +47,7 @@ public class Deposit {
   @Enumerated(EnumType.STRING)
   private DepositType depositType = DepositType.REPLENISHABLE;
   @Column(name = "deposit_limit")
-  private Float depositLimit;
+  private Long depositLimit;
   @Column(name = "income_date")
   @NotNull
   @Builder.Default
@@ -62,5 +62,8 @@ public class Deposit {
   @NotNull
   @Builder.Default
   private Boolean isDeleted = false;
+  @Column(name = "number")
+  @NotNull
+  private String number;
 
 }

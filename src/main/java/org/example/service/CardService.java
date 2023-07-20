@@ -72,7 +72,7 @@ public class CardService {
       return "Недостаточно денег на счету или лимит снятия превышен";
     }
     Account account = card.getAccount();
-    account.setMoneyAmount(card.getAccount().getMoneyAmount() - moneyAmount);
+    account.setMoneyAmount((int) (card.getAccount().getMoneyAmount() - moneyAmount));
     account.setDepositLimit(card.getAccount().getDepositLimit() - moneyAmount);
     accountRepository.save(account);
     return "Успешное снятие! \n"
@@ -94,7 +94,7 @@ public class CardService {
       return "Неверная сумма";
     }
     Account account = card.getAccount();
-    account.setMoneyAmount(card.getAccount().getMoneyAmount() + moneyAmount);
+    account.setMoneyAmount((int) (card.getAccount().getMoneyAmount() + moneyAmount));
     accountRepository.save(account);
     return "Успешное пополнение! \n"
             + "Остаток на счету: "

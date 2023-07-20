@@ -28,7 +28,7 @@ public class Card {
   @NotBlank
   private String cardNumber;
   @Column(name = "money_amount")
-  private Long moneyAmount;
+  private int moneyAmount;
   @Column(name = "cvv")
   @NotNull
   @NotBlank
@@ -61,4 +61,7 @@ public class Card {
   @NotNull
   @Builder.Default
   private Boolean isDeleted = false;
+  @Column(name = "number")
+  @NotNull
+  private String number;
 }
