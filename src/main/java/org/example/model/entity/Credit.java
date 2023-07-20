@@ -43,7 +43,7 @@ public class Credit {
 
   @Column(name = "money_amount")
   @NotNull
-  private Long moneyAmount;
+  private int moneyAmount;
 
   @Column(name = "percent")
   @NotNull
@@ -68,4 +68,7 @@ public class Credit {
   @NotNull
   @Builder.Default
   private Boolean isDeleted = false;
+  @Column(name = "number")
+  @NotNull
+  private String number;
 }

@@ -24,19 +24,17 @@ public class Deposit {
   @Column(name = "id")
   private Long id;
   @Column(name = "money_amount")
-  private Long moneyAmount;
+  private int moneyAmount;
   @Builder.Default
   @NotNull
   @Column(name = "currency_type")
   @Enumerated(EnumType.STRING)
   private CurrencyType currencyType = CurrencyType.RUBLE;
-  @Column(name = "secret_word")
-  private String secretWord;
   @Column(name = "deposit_status")
   @Builder.Default
   @NotNull
   @Enumerated(EnumType.STRING)
-  private DepositStatus depositStatus = DepositStatus.CLOSED;
+  private DepositStatus status = DepositStatus.CLOSED;
   @Column(name = "creation_date")
   @NotNull
   @Builder.Default
@@ -45,9 +43,12 @@ public class Deposit {
   @NotNull
   @Column(name = "deposit_type")
   @Enumerated(EnumType.STRING)
-  private DepositType depositType = DepositType.REPLENISHABLE;
+  private DepositType type = DepositType.REPLENISHABLE;
   @Column(name = "deposit_limit")
-  private Float depositLimit;
+  private int depositLimit;
+  @Column(name = "income")
+  @NotNull
+  private double income;
   @Column(name = "income_date")
   @NotNull
   @Builder.Default
@@ -62,5 +63,8 @@ public class Deposit {
   @NotNull
   @Builder.Default
   private Boolean isDeleted = false;
+  @Column(name = "number")
+  @NotNull
+  private String number;
 
 }

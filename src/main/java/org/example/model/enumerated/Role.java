@@ -6,7 +6,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public enum Role
 //        implements GrantedAuthority
-      {
+        {
 
     ADMIN("ADMIN"),
     USER("USER");

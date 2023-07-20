@@ -6,16 +6,14 @@ import org.example.model.entity.Client;
 import org.example.model.enumerated.status.AccountStatus;
 import org.example.model.enumerated.type.CurrencyType;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
 public class AccountRequestDTO {
-  private Long moneyAmount;
+  private int moneyAmount;
   private String secretWord;
   private AccountStatus status;
-  private LocalDateTime creationDate;
-  private Long depositLimit;
+  private int depositLimit;
   private Client client;
   private List<Card> card;
   private CurrencyType currencyType;

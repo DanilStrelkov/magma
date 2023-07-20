@@ -6,6 +6,8 @@ import lombok.*;
 import org.example.model.enumerated.Role;
 import org.example.model.enumerated.status.ClientStatus;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Data
 @Builder
@@ -27,13 +29,17 @@ public class Client {
   private String address;
   @Column(name = "phone")
   private String phone;
+  @Column(name = "reg_date")
+  @NotNull
+  @Builder.Default
+  private LocalDateTime regDate = LocalDateTime.now();
   @Column(name = "email")
   private String email;
   @Builder.Default
   @NotNull
   @Column(name = "client_status")
   @Enumerated(EnumType.STRING)
-  private ClientStatus clientStatus = ClientStatus.ACTIVE;
+  private ClientStatus status = ClientStatus.ACTIVE;
   @Builder.Default
   @NotNull
   @Column(name = "client_role")
@@ -48,4 +54,7 @@ public class Client {
   @NotNull
   @Builder.Default
   private Boolean isDeleted = false;
+  @Column(name = "number")
+  @NotNull
+  private String number;
 }

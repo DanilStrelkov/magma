@@ -56,7 +56,7 @@ public class CardService {
       return HttpStatus.I_AM_A_TEAPOT;
     }
 
-  public String getCash(String cardNumber, String cvv, Long moneyAmount) {
+  public String getCash(String cardNumber, String cvv, int moneyAmount) {
     Optional<Card> cardOptional = cardRepository.getCardByCardNumber(cardNumber);
     if (cardOptional.isEmpty()) {
       return "Карта не найдена";
@@ -81,7 +81,7 @@ public class CardService {
             + "Доступно к снятию в этом месяце: " + account.getDepositLimit();
   }
 
-  public String putCash(String cardNumber, String cvv, Long moneyAmount) {
+  public String putCash(String cardNumber, String cvv, int moneyAmount) {
     Optional<Card> cardOptional = cardRepository.getCardByCardNumber(cardNumber);
     if (cardOptional.isEmpty()) {
       return "Карта не найдена";
