@@ -49,7 +49,6 @@ public class Client {
   private String password;
   @Column(name = "login")
   private String login;
-
   @Column(name = "deleted")
   @NotNull
   @Builder.Default

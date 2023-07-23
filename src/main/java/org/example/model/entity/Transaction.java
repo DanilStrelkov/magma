@@ -5,7 +5,10 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.example.model.TransactionParticipant;
 import org.example.model.enumerated.type.CurrencyType;
+
+import java.time.LocalDateTime;
 
 @Entity
 @Data
@@ -23,12 +26,12 @@ public class Transaction {
   @Column(name = "currency_type")
   @Enumerated(EnumType.STRING)
   private CurrencyType currencyType;
-
   @ManyToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "transaction_participant_from", referencedColumnName = "id")
   private TransactionParticipant from;
   @ManyToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "transaction_participant_to", referencedColumnName = "id")
   private TransactionParticipant to;
-
+  @Column(name = "time")
+  private LocalDateTime time;
 }

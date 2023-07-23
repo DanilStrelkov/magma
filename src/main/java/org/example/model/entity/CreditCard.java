@@ -25,6 +25,9 @@ public class CreditCard {
   @Column(name = "id")
   private Long id;
 
+  @Column(name = "money_amount")
+  private int moneyAmount;
+
   @Column(name = "card_number")
   private String cardNumber;
 
@@ -32,8 +35,6 @@ public class CreditCard {
   @NotNull
   @NotBlank
   private String cvv;
-  @Column(name = "money_amount")
-  private int moneyAmount;
 
   @Column(name = "expire_date")
   @NotNull
