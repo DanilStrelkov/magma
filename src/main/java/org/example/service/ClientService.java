@@ -13,6 +13,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @Service
 @AllArgsConstructor
@@ -20,8 +22,16 @@ public class ClientService {
 
   private final ClientRepository clientRepository;
   private final ClientMapper clientMapper;
+  public static final Pattern VALID_EMAIL_ADDRESS_REGEX =
+          Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
+
+  public static final Pattern VALID_PHONE_REGEX = Pattern.compile("8" + "^\\d{10}$");
 
   public ClientResponseDTO create(ClientRequestDTO dto) {
+    Client client = clientMapper.toEntity(dto);
+    if(!validate(client.getEmail(), client.getPhone())) {
+      // exception
+    }
     return clientMapper.toDto(clientRepository.save(clientMapper.toEntity(dto)));
   }
 
@@ -40,13 +50,13 @@ public class ClientService {
             .filter(user -> login.equals(user.getLogin()))
             .findFirst();
   }
-  public ClientResponseDTO update(Long id ,ClientRequestDTO clientRequestDTO) {
-    if(clientRepository.existsById(id)) {
+
+  public ClientResponseDTO update(Long id, ClientRequestDTO clientRequestDTO) {
+    if (clientRepository.existsById(id)) {
       Client client = clientMapper.toEntity(clientRequestDTO);
       client.setId(id);
       return clientMapper.toDto(clientRepository.save(client));
-    }
-    else{
+    } else {
       //exception
       return null;
     }
@@ -69,5 +79,20 @@ public class ClientService {
       client.setIsDeleted(true);
     }
     return HttpStatus.I_AM_A_TEAPOT;
+  }
+
+  public boolean validate(String email, String phone) {
+    Matcher matcherEmail = VALID_EMAIL_ADDRESS_REGEX.matcher(email);
+    Matcher matcherPhone = VALID_PHONE_REGEX.matcher(phone);
+    if (!matcherEmail.matches()) {
+      System.out.println("Неверный формат email");
+      return matcherEmail.matches();
+    }
+    if (!matcherPhone.matches()) {
+      System.out.println("Неверный формат номера");
+      return matcherPhone.matches();
+    }
+    return true;
+
   }
 }
