@@ -19,4 +19,5 @@ public class AccountResponseDTO {
   private Client client;
   private List<Card> card;
   private CurrencyType currencyType;
+  private String number;
 }

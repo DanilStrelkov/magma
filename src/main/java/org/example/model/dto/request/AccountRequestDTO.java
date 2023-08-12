@@ -17,4 +17,5 @@ public class AccountRequestDTO {
   private Client client;
   private List<Card> card;
   private CurrencyType currencyType;
+  private String number;
 }

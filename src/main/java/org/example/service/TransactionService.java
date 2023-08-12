@@ -7,6 +7,7 @@ import org.example.model.dto.request.TransactionParticipantRequestDTO;
 import org.example.model.dto.response.TransactionResponseDTO;
 import org.example.model.entity.Transaction;
 import org.example.model.TransactionParticipant;
+import org.example.model.enumerated.type.ObjectType;
 import org.example.repository.TransactionRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -22,6 +23,12 @@ public class TransactionService {
   private final TransactionParticipantMapper transactionParticipantMapper;
   private final TransactionParticipantService transactionParticipantService;
 
+  public TransactionParticipantRequestDTO paramsToDTO(String number, ObjectType objectType){
+    TransactionParticipantRequestDTO transactionParticipantRequestDTO = new TransactionParticipantRequestDTO();
+    transactionParticipantRequestDTO.setObjectType(objectType);
+    transactionParticipantRequestDTO.setNumber(number);
+    return transactionParticipantRequestDTO;
+  }
   public List<TransactionResponseDTO> readAll() {
     return transactionMapper.toListDto(transactionRepository.findAll());
 

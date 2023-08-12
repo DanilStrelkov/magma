@@ -54,25 +54,21 @@ public class TransactionParticipantService {
         depositRepository.save(deposit);
       }
       case CARD -> {
-        transactionParticipant.setMoneyAmount(cardRepository.getCardByNumber(transactionParticipant.getNumber()).get().getMoneyAmount());
         Card card = cardRepository.getCardByNumber(transactionParticipant.getNumber()).get();
         card.setMoneyAmount(transactionParticipant.getMoneyAmount());
         cardRepository.save(card);
       }
       case CREDIT_CARD -> {
-        transactionParticipant.setMoneyAmount(creditCardRepository.getCreditCardByNumber(transactionParticipant.getNumber()).get().getMoneyAmount());
         CreditCard creditCard = creditCardRepository.getCardByCardNumber(transactionParticipant.getNumber()).get();
         creditCard.setMoneyAmount(transactionParticipant.getMoneyAmount());
         creditCardRepository.save(creditCard);
       }
       case ACCOUNT -> {
-        transactionParticipant.setMoneyAmount(accountRepository.getAccountByNumber(transactionParticipant.getNumber()).get().getMoneyAmount());
         Account account = accountRepository.getAccountByNumber(transactionParticipant.getNumber()).get();
         account.setMoneyAmount(transactionParticipant.getMoneyAmount());
         accountRepository.save(account);
       }
       case CREDIT -> {
-        transactionParticipant.setMoneyAmount(creditRepository.getCreditByNumber(transactionParticipant.getNumber()).get().getMoneyAmount());
         Credit credit = creditRepository.getCreditByNumber(transactionParticipant.getNumber()).get();
         credit.setMoneyAmount(transactionParticipant.getMoneyAmount());
         creditRepository.save(credit);
